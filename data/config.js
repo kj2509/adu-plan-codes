@@ -58,14 +58,11 @@ window.ADU_CONFIG = {
       "pattern": "^Associate"
     }
   ],
+  "min_start_year": 2017,
+  "campuses": {"AD": "Abu Dhabi", "AA": "Al Ain", "DB": "Dubai"},
   "source": {
     "site": "advisor.adu.ac.ae",
     "scraped": "2026-11-11",
     "plan_sheet": "Acad_Program_Plan_codes_updated.xlsx"
-  },
-  "contact": {
-    "name": "Kevin John",
-    "email": "kevin.john@adu.ac.ae",
-    "message": "For edits or issues, contact"
   }
 };
