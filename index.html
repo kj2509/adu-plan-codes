@@ -303,7 +303,7 @@ header.fx-done .chip-logo:after{animation:none}
   </main>
 </div>
 
-<footer><div>Abu Dhabi University &nbsp;|&nbsp; Curricula &amp; Plan Codes &nbsp;|&nbsp; Links open <span id="srcSite">advisor.adu.ac.ae</span> &nbsp;|&nbsp; Course lists, prerequisites and notes as published on each curriculum page</div></footer>
+<footer><div>Abu Dhabi University &nbsp;|&nbsp; Curricula &amp; Plan Codes &nbsp;|&nbsp; Links open <span id="srcSite">advisor.adu.ac.ae</span> &nbsp;|&nbsp; Course lists, prerequisites and notes as published on each curriculum page<br><span id="contactLine">For edits or issues, contact <a href="mailto:kevin.john@adu.ac.ae">kevin.john@adu.ac.ae</a></span></div></footer>
 
 <script src="data/config.js"></script>
 <script src="data/plans.js"></script>
@@ -345,6 +345,8 @@ const norm = s => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
 const tight = s => norm(s).replace(/[\s\-()]/g, "");
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const CONTACT = Object.assign({email: "kevin.john@adu.ac.ae", message: "For edits or issues, contact"}, (window.ADU_CONFIG || {}).contact || {});
+document.addEventListener("DOMContentLoaded", () => { const c = document.getElementById("contactLine"); if (c) c.innerHTML = `${esc(CONTACT.message)} <a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a>`; });
 
 /* ---------- precompute (once per table, shared by versions) ---------- */
 const T = D.tables.map(t => {

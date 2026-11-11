@@ -71,3 +71,7 @@ Edit `data/config.js`. Colleges are shown in the order they are listed. `aliases
 | `colleges[]` | `{code, name, color, aliases[]}` in display order. |
 | `levels[]` | `{name, pattern}`: the level chip name, and a regex tested against `degree`. |
 | `source` | `{site, scraped, plan_sheet}`. `site` is shown in the footer. `scraped` (YYYY-MM-DD) is shown as the footer tooltip. |
+
+## Contact
+
+For edits or issues, contact Kevin John — kevin.john@adu.ac.ae
