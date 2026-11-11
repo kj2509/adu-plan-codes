@@ -10,7 +10,7 @@ Files (see README.md for the data model):
 - data/plans.js      <- generated here from the Excel sheet (Sheet1: College, Degree,
                         Curriculum Version + link, plan code, Study Plan + link). Do not hand-edit.
 - data/curricula.js  <- course lists, prerequisites, notes and total credits per curriculum
-                        page, scraped from advisor.adu.ac.ae (refreshed by the scraper, not here).
+                        page, scraped from the ADU advisor site (public link: advisor-studentsaduac.msappproxy.net) (refreshed by the scraper, not here).
 - data/offerings.js  <- campuses each course is offered at (AD, AD_M, AD_F, AA, AA_M, AA_F, DB),
                         from the PeopleSoft COURSE_CATALOGUE_OFFERING export (approved offerings only).
 - data/config.js     <- colleges (code, name, colour, sheet aliases), degree-level rules and
@@ -41,7 +41,7 @@ DEFAULT_CONFIG = {
         {'name': 'Diploma', 'pattern': 'Diploma'},
         {'name': 'Associate', 'pattern': '^Associate'},
     ],
-    'source': {'site': 'advisor.adu.ac.ae', 'scraped': '2026-11-11',
+    'source': {'site': 'advisor-studentsaduac.msappproxy.net', 'scraped': '2026-11-11',
                'plan_sheet': 'Acad_Program_Plan_codes_updated.xlsx'},
 }
 

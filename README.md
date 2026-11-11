@@ -9,7 +9,7 @@ A static page (no server, no build step at view time). `index.html` holds **only
 | File | What it holds | How it changes |
 |---|---|---|
 | `data/plans.js` | One record per curriculum version: college, degree, version, curriculum link, PeopleSoft plan code, study plan + link. | **Generated** from `Acad_Program_Plan_codes_updated.xlsx` by `build_data.py`. Don't edit by hand. |
-| `data/curricula.js` | Per curriculum page: total credits, footnotes and every course row (code, title, prerequisites, credits, section). | **Scraped** from advisor.adu.ac.ae (see "Refreshing course data"). Don't edit by hand. |
+| `data/curricula.js` | Per curriculum page: total credits, footnotes and every course row (code, title, prerequisites, credits, section). | **Scraped** from the ADU advisor site (see "Refreshing course data"). Don't edit by hand. |
 | `data/offerings.js` | Campuses each course is offered at (Abu Dhabi, Al Ain, Dubai; M/F sections), keyed by course code. | **Generated** by `python build_data.py --offerings COURSE_CATALOGUE_OFFERING.xlsx` from the PeopleSoft Query Manager export (approved offerings only). |
 | `data/config.js` | Colleges (code, display name, colour, display order, aliases used in the Excel sheet), the rules that map a degree name to a level, and source info (site, date scraped), `min_start_year` (versions that started before this year are hidden; versions with no known year are always shown) and campus names. | **Hand-edited.** `build_data.py` creates it with defaults only if it is missing and never overwrites it. |
 | `assets/adu_logo.jpg` | ADU logo (also used as the favicon). | Replace the file. |
@@ -32,7 +32,7 @@ If `data/config.js` fails to load, the page still works: colleges appear under t
 
 ## Refreshing course data
 
-`data/curricula.js` is produced by the scraper/builder kept outside this repo (`build_site.py`). It reads each curriculum page on advisor.adu.ac.ae, then writes `data/curricula.js` (and `data/plans.js`) in the format below. After a re-scrape:
+`data/curricula.js` is produced by the scraper/builder kept outside this repo (`build_site.py`). It reads each curriculum page on the ADU advisor site, then writes `data/curricula.js` (and `data/plans.js`) in the format below. After a re-scrape:
 1. Update `source.scraped` in `data/config.js`.
 2. Run `python build_data.py --check`.
 3. Commit `data/curricula.js` (and `data/config.js`).
@@ -72,3 +72,7 @@ Edit `data/config.js`. Colleges are shown in the order they are listed. `aliases
 | `colleges[]` | `{code, name, color, aliases[]}` in display order. |
 | `levels[]` | `{name, pattern}`: the level chip name, and a regex tested against `degree`. |
 | `source` | `{site, scraped, plan_sheet}`. `site` is shown in the footer. `scraped` (YYYY-MM-DD) is shown as the footer tooltip. |
+
+## Links
+
+All curriculum and study plan links use the public address `https://advisor-studentsaduac.msappproxy.net/` (the internal `advisor.adu.ac.ae:444` address only works on the ADU network). The page paths are the same on both.
