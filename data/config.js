@@ -61,7 +61,7 @@ window.ADU_CONFIG = {
   "min_start_year": 2017,
   "campuses": {"AD": "Abu Dhabi", "AA": "Al Ain", "DB": "Dubai"},
   "source": {
-    "site": "advisor.adu.ac.ae",
+    "site": "advisor-studentsaduac.msappproxy.net",
     "scraped": "2026-11-11",
     "plan_sheet": "Acad_Program_Plan_codes_updated.xlsx"
   }
