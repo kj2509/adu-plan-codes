@@ -10,7 +10,8 @@ A static page (no server, no build step at view time). `index.html` holds **only
 |---|---|---|
 | `data/plans.js` | One record per curriculum version: college, degree, version, curriculum link, PeopleSoft plan code, study plan + link. | **Generated** from `Acad_Program_Plan_codes_updated.xlsx` by `build_data.py`. Don't edit by hand. |
 | `data/curricula.js` | Per curriculum page: total credits, footnotes and every course row (code, title, prerequisites, credits, section). | **Scraped** from advisor.adu.ac.ae (see "Refreshing course data"). Don't edit by hand. |
-| `data/config.js` | Colleges (code, display name, colour, display order, aliases used in the Excel sheet), the rules that map a degree name to a level, and source info (site, date scraped). | **Hand-edited.** `build_data.py` creates it with defaults only if it is missing and never overwrites it. |
+| `data/offerings.js` | Campuses each course is offered at (Abu Dhabi, Al Ain, Dubai; M/F sections), keyed by course code. | **Generated** by `python build_data.py --offerings COURSE_CATALOGUE_OFFERING.xlsx` from the PeopleSoft Query Manager export (approved offerings only). |
+| `data/config.js` | Colleges (code, display name, colour, display order, aliases used in the Excel sheet), the rules that map a degree name to a level, and source info (site, date scraped), `min_start_year` (versions that started before this year are hidden; versions with no known year are always shown) and campus names. | **Hand-edited.** `build_data.py` creates it with defaults only if it is missing and never overwrites it. |
 | `assets/adu_logo.jpg` | ADU logo (also used as the favicon). | Replace the file. |
 | `index.html` | The page: layout, search, filters, effects. No data inside. | Code changes only. |
 | `build_data.py` | Rebuilds `data/plans.js` from Excel and validates all data files (`--check`). | Needs Python 3 + `openpyxl`; no network. |
@@ -71,7 +72,3 @@ Edit `data/config.js`. Colleges are shown in the order they are listed. `aliases
 | `colleges[]` | `{code, name, color, aliases[]}` in display order. |
 | `levels[]` | `{name, pattern}`: the level chip name, and a regex tested against `degree`. |
 | `source` | `{site, scraped, plan_sheet}`. `site` is shown in the footer. `scraped` (YYYY-MM-DD) is shown as the footer tooltip. |
-
-## Contact
-
-For edits or issues, contact Kevin John — kevin.john@adu.ac.ae
